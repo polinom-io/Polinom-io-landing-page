@@ -8,9 +8,11 @@ directly to the four service lines listed on the page.
 ## Structure
 
 ```
-index.html        Page markup
+index.html        Page markup, with data-i18n attributes for translatable text
 css/styles.css     All styling, incl. @font-face declarations and light/dark theme tokens
 js/main.js         Theme toggle (persists choice to localStorage)
+js/i18n.js         Language loader/switcher (persists choice to localStorage)
+locales/           One JSON file per language (see Internationalization below)
 fonts/             Self-hosted webfonts (see Fonts & licensing below)
 ```
 
@@ -21,8 +23,10 @@ python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
-(Opening `index.html` directly also works, but a local server avoids any
-`file://` font-loading quirks in some browsers.)
+A local server is required here, not just recommended: `js/i18n.js` fetches
+`locales/*.json`, and `fetch()` of local files is blocked under the `file://`
+protocol in most browsers. Opening `index.html` directly will show the
+English fallback markup but the language toggle won't work.
 
 ## Design
 
@@ -51,6 +55,28 @@ terminal or editor config using these same faces), grab those separately from
 the [nerd-fonts releases](https://github.com/ryanoasis/nerd-fonts/releases) —
 they're not needed for this page and are much larger due to the bundled icon
 sets.
+
+## Internationalization
+
+Supported languages: English (`locales/en.json`) and Spanish (`locales/es.json`).
+
+- On load, `js/i18n.js` picks a language in this order: a previously chosen
+  language (`localStorage`), then the browser's `navigator.language`, then
+  English as the default.
+- The header button toggles between the two and remembers the choice.
+- Elements are marked up with one of three attributes, matched against keys
+  in the locale JSON:
+  - `data-i18n="key"` — sets `textContent` (plain strings).
+  - `data-i18n-html="key"` — sets `innerHTML`, for the handful of strings that
+    need inline markup (the equation, the approach-card key/value lines).
+    Locale values here are author-controlled markup, not user input.
+  - `data-i18n-aria="key"` — sets `aria-label` (toggle button labels).
+- The static English text already in `index.html` is the pre-JS fallback and
+  should stay in sync with `locales/en.json`.
+
+To add a language: copy `locales/en.json` to `locales/<code>.json`, translate
+every value (keep the keys identical), and add `<code>` to the `SUPPORTED`
+array in `js/i18n.js`.
 
 ## Content
 

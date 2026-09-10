@@ -181,6 +181,28 @@ nav.links a:focus-visible {
   color: var(--accent);
 }
 
+.lang-toggle {
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  height: 2.1rem;
+  padding: 0 0.75rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 1.5rem;
+}
+.lang-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .theme-toggle {
   border: 1px solid var(--border-strong);
   background: var(--surface);
@@ -192,7 +214,7 @@ nav.links a:focus-visible {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin-left: 1.5rem;
+  margin-left: 0.75rem;
 }
 
 .theme-toggle:focus-visible,
