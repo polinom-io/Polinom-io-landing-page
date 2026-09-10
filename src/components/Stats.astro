@@ -1,0 +1,23 @@
+---
+import { useDictionary } from "../i18n/ui";
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const items = useDictionary(lang).stats.items;
+---
+
+<section class="alt">
+  <div class="wrap">
+    <div class="stats-row">
+      {items.map((stat) => (
+        <div class="stat">
+          <div class="figure">{stat.figure}</div>
+          <div class="label">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -3,7 +3,7 @@
   font-weight: 200 800;
   font-style: normal;
   font-display: swap;
-  src: url("../fonts/monaspace-xenon-var.woff2") format("woff2");
+  src: url("/fonts/monaspace-xenon-var.woff2") format("woff2");
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  src: url("../fonts/hack-regular.woff2") format("woff2");
+  src: url("/fonts/hack-regular.woff2") format("woff2");
 }
 
 @font-face {
@@ -19,7 +19,7 @@
   font-weight: 700;
   font-style: normal;
   font-display: swap;
-  src: url("../fonts/hack-bold.woff2") format("woff2");
+  src: url("/fonts/hack-bold.woff2") format("woff2");
 }
 
 :root {

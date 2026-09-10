@@ -1,0 +1,30 @@
+---
+import { useDictionary } from "../i18n/ui";
+
+interface Props {
+  lang: string;
+  t: (key: string) => string;
+}
+
+const { lang, t } = Astro.props;
+const card = useDictionary(lang).approach.card;
+---
+
+<section id="approach">
+  <div class="wrap approach-grid">
+    <div>
+      <span class="eyebrow">{t("approach.eyebrow")}</span>
+      <h2 style="margin:0.6rem 0 1.2rem;">{t("approach.h2")}</h2>
+      <p class="lede">{t("approach.p1")}</p>
+      <p class="lede">{t("approach.p2")}</p>
+    </div>
+    <div class="approach-card">
+      <div><span class="k">{card.solvedFor}</span></div>
+      <div><span class="v-blue">{card.strategy.label}</span> <span class="k">=</span> {card.strategy.value}</div>
+      <div><span class="v-cyan">{card.engineering.label}</span> <span class="k">=</span> {card.engineering.value}</div>
+      <div><span class="v-violet">{card.data.label}</span> <span class="k">=</span> {card.data.value}</div>
+      <div><span class="v-orange">{card.execution.label}</span> <span class="k">=</span> {card.execution.value}</div>
+      <div style="margin-top:0.6rem;"><span class="k">{card.degree.prefix}</span> {card.degree.value}</div>
+    </div>
+  </div>
+</section>

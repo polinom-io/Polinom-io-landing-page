@@ -1,0 +1,15 @@
+---
+interface Props {
+  lang: string;
+  t: (key: string) => string;
+}
+
+const { lang, t } = Astro.props;
+---
+
+<footer>
+  <div class="wrap footer-row">
+    <a href={lang === "en" ? "/" : `/${lang}/`} class="wordmark">polinom<sup>.io</sup></a>
+    <span>{t("footer.copyright")}</span>
+  </div>
+</footer>

@@ -1,0 +1,19 @@
+{
+  "name": "polinom-io",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "check-locales": "python3 scripts/check_locales.py",
+    "check-i18n-keys": "python3 scripts/check_i18n_keys.py"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "astro": "^5.1.0",
+    "typescript": "^5.9.3"
+  }
+}

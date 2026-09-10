@@ -1,0 +1,33 @@
+---
+interface Props {
+  t: (key: string) => string;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">{t("hero.eyebrow")}</span>
+    <h1>{t("hero.h1")}</h1>
+    <p class="dek">{t("hero.dek")}</p>
+
+    <div class="equation">
+      <span class="op">{t("hero.equation.prefix")}</span><span class="op"> = </span><span class="term-strategy">{t("hero.equation.strategy")}</span><span class="op">·x³ + </span><span class="term-engineering">{t("hero.equation.engineering")}</span><span class="op">·x² + </span><span class="term-data">{t("hero.equation.data")}</span><span class="op">·x + </span><span class="term-execution">{t("hero.equation.execution")}</span>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#contact">{t("hero.ctaPrimary")}</a>
+      <a class="btn btn-ghost" href="#approach">{t("hero.ctaGhost")}</a>
+    </div>
+  </div>
+</section>
+
+<div class="curve-divider">
+  <svg viewBox="0 0 1200 160" preserveAspectRatio="none" role="img" aria-label="Rising growth curve">
+    <line x1="0" y1="140" x2="1200" y2="140" stroke="var(--border)" stroke-width="1"></line>
+    <path d="M0,130 C 260,132 320,60 560,78 C 780,94 820,20 1200,14" fill="none" stroke="var(--blue)" stroke-width="2.5"></path>
+    <circle cx="560" cy="78" r="4.5" fill="var(--cyan)"></circle>
+    <circle cx="1200" cy="14" r="4.5" fill="var(--orange)"></circle>
+  </svg>
+</div>

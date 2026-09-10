@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "./Header.astro";
+import Hero from "./Hero.astro";
+import Approach from "./Approach.astro";
+import Services from "./Services.astro";
+import Process from "./Process.astro";
+import Stats from "./Stats.astro";
+import Contact from "./Contact.astro";
+import Footer from "./Footer.astro";
+import { useTranslations } from "../i18n/ui";
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<Layout lang={lang} title={t("meta.title")} description={t("meta.description")}>
+  <Header lang={lang} t={t} />
+  <main id="top">
+    <Hero t={t} />
+    <Approach lang={lang} t={t} />
+    <Services lang={lang} t={t} />
+    <Process lang={lang} t={t} />
+    <Stats lang={lang} />
+    <Contact t={t} />
+  </main>
+  <Footer lang={lang} t={t} />
+</Layout>

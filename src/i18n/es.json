@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "title": "Polinom.io",
+    "description": "Consultoría tecnológica que descompone los desafíos de negocio en estrategia, ingeniería, datos y ejecución."
+  },
+  "nav": {
+    "approach": "Enfoque",
+    "services": "Servicios",
+    "process": "Proceso",
+    "contact": "Contacto"
+  },
+  "theme": {
+    "toggleLabel": "Cambiar tema de color"
+  },
+  "lang": {
+    "switchLabel": "Switch to English"
+  },
+  "hero": {
+    "eyebrow": "Consultoría Tecnológica",
+    "h1": "El crecimiento de tu negocio tiene una solución exacta.",
+    "dek": "Polinom.io combina estrategia, ingeniería, datos y ejecución en una sola ecuación para tu negocio — y luego la resuelve. Sin conjeturas, sin cajas negras: cada término responde por un resultado.",
+    "equation": {
+      "prefix": "P(negocio)",
+      "strategy": "Estrategia",
+      "engineering": "Ingeniería",
+      "data": "Datos",
+      "execution": "Ejecución"
+    },
+    "ctaPrimary": "Iniciar un proyecto",
+    "ctaGhost": "Ver nuestro enfoque"
+  },
+  "approach": {
+    "eyebrow": "Enfoque",
+    "h2": "Todo problema de negocio se descompone en términos.",
+    "p1": "La mayoría de las consultoras te venden un término a la vez — una propuesta de estrategia, un equipo de desarrollo, un equipo de datos — y te dejan a ti integrar el resto. Nosotros construimos el polinomio completo: la combinación acumulativa de decisiones que realmente mueve los ingresos, el margen y la velocidad.",
+    "p2": "Empezamos definiendo tus variables — las restricciones reales de tu mercado, tu stack y tu equipo — y luego ajustamos los coeficientes: cuánto peso tiene la estrategia frente a la ingeniería frente a los datos, específicamente para tu negocio. El resultado no es una plantilla. Es una función calibrada para ti.",
+    "card": {
+      "solvedFor": "// resuelto para",
+      "strategy": { "label": "estrategia", "value": "posición de mercado, hoja de ruta" },
+      "engineering": { "label": "ingeniería", "value": "arquitectura, entrega" },
+      "data": { "label": "datos", "value": "pipelines, ML, toma de decisiones" },
+      "execution": { "label": "ejecución", "value": "entregado, medido, iterado" },
+      "degree": { "prefix": "// grado del polinomio =", "value": "complejidad de tu negocio" }
+    }
+  },
+  "services": {
+    "eyebrow": "Servicios",
+    "h2": "Cuatro términos, una ecuación.",
+    "p": "Cada proyecto se apoya en algunos o en los cuatro términos — ponderados según dónde tu negocio más lo necesita.",
+    "terms": [
+      { "degree": "x³", "title": "Estrategia y Asesoría", "body": "Hojas de ruta tecnológicas, decisiones de construir o comprar, y modelos operativos atados a un estado de resultados, no a una presentación." },
+      { "degree": "x²", "title": "Ingeniería de Software", "body": "Construcción de productos, modernización de plataformas y arquitectura de sistemas diseñada para durar más que la próxima ronda de inversión." },
+      { "degree": "x¹", "title": "Datos e IA", "body": "Pipelines, machine learning aplicado y sistemas de decisión que convierten tus datos operativos en un activo que se compone con el tiempo." },
+      { "degree": "x⁰", "title": "Ejecución y Entrega", "body": "El término constante — siempre presente. Equipos de entrega embebidos que construyen, monitorean y mantienen la solución correcta." }
+    ]
+  },
+  "process": {
+    "eyebrow": "Proceso",
+    "h2": "Cómo resolvemos el crecimiento.",
+    "p": "El mismo método de cuatro pasos sostiene cada proyecto, escalado al tamaño de tu ecuación.",
+    "steps": [
+      { "num": "Definir las variables", "title": "Descubrir", "body": "Entrevistas con stakeholders, auditoría de sistemas y restricciones de mercado mapeadas antes de fijar un solo coeficiente." },
+      { "num": "Ajustar el modelo", "title": "Diseñar", "body": "Estrategia y arquitectura ponderadas según tus datos reales, tu equipo y tu cronograma — no según un manual genérico." },
+      { "num": "Construir la solución", "title": "Construir", "body": "Ingenieros y especialistas en datos embebidos que entregan en incrementos cortos y revisables junto a tu equipo." },
+      { "num": "Desplegar y diferenciar", "title": "Escalar", "body": "Lanzamiento, instrumentación e iteración — para que la curva siga subiendo después de terminado el proyecto." }
+    ]
+  },
+  "stats": {
+    "items": [
+      { "figure": "40+", "label": "Sistemas en producción" },
+      { "figure": "12", "label": "Industrias atendidas" },
+      { "figure": "3.1×", "label": "ROI promedio por proyecto" },
+      { "figure": "98%", "label": "Tasa de renovación de clientes" }
+    ]
+  },
+  "contact": {
+    "h2": "Resolvamos el crecimiento.",
+    "note": "Los proyectos suelen comenzar dentro de dos semanas."
+  },
+  "footer": {
+    "copyright": "© 2026 Polinom.io — consultoría tecnológica."
+  }
+}

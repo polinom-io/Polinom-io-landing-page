@@ -2,41 +2,45 @@
 
 This repo currently has no CI: nothing checks a change before it lands, and
 nothing publishes the site anywhere. That's a real gap given how much of it
-is hand-kept in sync by whoever's editing — `locales/en.json` and
-`locales/es.json` need the same key set, and every `data-i18n*` attribute in
-`index.html` needs a matching key in the locale files. Both have already
-drifted once or twice during this project's normal editing. This proposes
-two workflows to catch that automatically, plus auto-deploy to GitHub Pages
-since the site is static with zero build step — a straight file copy is a
-full deployment.
+is hand-kept in sync by whoever's editing — `src/i18n/en.json` and
+`src/i18n/es.json` need the same key set, and every `t("...")` call in a
+`.astro` component needs a matching key in the locale files. Both have
+already drifted once or twice during this project's normal editing. This
+proposes two workflows to catch that automatically, plus auto-deploy to
+GitHub Pages once the Astro build produces `dist/`.
 
 ## What's included
 
 ### `workflows/ci.yml` — runs on every push and pull request
 
-1. **HTML5 validation** (`html5validator`) — catches malformed markup in
-   `index.html` (unclosed tags, invalid attributes, etc.).
-2. **`scripts/check_locales.py`** — parses every file under `locales/` as
-   JSON and fails if any locale's key set doesn't exactly match the others.
-   This is what would have caught it if `es.json` had ever fallen out of
-   sync with `en.json`.
-3. **`scripts/check_i18n_keys.py`** — extracts every key referenced via
-   `data-i18n`, `data-i18n-html`, or `data-i18n-aria` in `index.html` and
-   fails if any of them aren't defined in `locales/en.json` (a typo'd key
-   silently shows nothing, since `js/i18n.js` just skips keys it can't
-   find). Also warns (non-fatal) about locale keys no longer referenced in
-   the markup, as a dead-entry signal.
+1. **`npm run check`** (`astro check`) — TypeScript/Astro diagnostics. This
+   is also what catches structural mismatches in the data accessed directly
+   off `useDictionary()` (`services.terms`, `process.steps`,
+   `approach.card`, `stats.items`) — that data isn't string-keyed, so it
+   can't be grepped, but `useDictionary()`'s return type comes straight from
+   the `en.json`/`es.json` imports, so a shape mismatch between the two
+   locale files fails the build here.
+2. **`scripts/check_locales.py`** — parses every file under `src/i18n/` as
+   JSON and fails if any locale's leaf-key set (recursing into nested
+   objects/arrays) doesn't exactly match the others.
+3. **`scripts/check_i18n_keys.py`** — extracts every key referenced via a
+   `t("...")` call anywhere in `src/**/*.astro` and fails if any of them
+   aren't defined in `src/i18n/en.json` (a typo'd key otherwise throws at
+   render time — `useTranslations()`'s `t()` throws on a key missing from
+   both the active language and the English fallback).
+4. **`npm run build`** — the actual Astro static build.
+5. **HTML5 validation** (`html5validator`) — run against the *built* output
+   in `dist/`, not the source `.astro` files, so it's checking exactly what
+   would ship.
 
-All three checks were run locally against the current repo before writing
-this proposal — they pass clean.
+All of this was run locally against the current repo before writing this
+proposal — it passes clean.
 
 ### `workflows/deploy.yml` — runs on push to `main`
 
-Runs the same three checks, then — only if they pass — deploys the repo
-root straight to GitHub Pages via the official `actions/upload-pages-artifact`
-+ `actions/deploy-pages` actions. No build step, because there isn't one:
-`index.html` already references `css/`, `js/`, `fonts/`, and `locales/` by
-relative path, so the deployed site is just the repo as-is.
+Runs the same five steps, then — only if they pass — uploads `dist/` as a
+Pages artifact and deploys it via the official
+`actions/upload-pages-artifact` + `actions/deploy-pages` actions.
 
 ## Manual step required (one-time, can't be done from a workflow)
 
@@ -53,11 +57,11 @@ on its own.
 
 ## What this deliberately leaves out
 
-- **No Node/npm tooling** — the repo has zero JS dependencies today (see
-  the README), so CI stays on Python (already on every GitHub runner) rather
-  than introducing a `package.json` and `node_modules` just to run a linter.
 - **No visual regression / screenshot testing** — would need a headless
   browser step and reference images to maintain; worth adding later if the
   page keeps evolving, not proposed here.
 - **No custom domain / CNAME setup** — out of scope until there's an actual
   domain decision to make.
+- **No dependency-update automation** (Dependabot/Renovate) — worth adding
+  once there's a real dependency surface beyond Astro itself; not proposed
+  here to keep this change focused.

@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
-"""Confirm every data-i18n* key referenced in index.html exists in locales/en.json,
-and flag any locale keys that index.html no longer references.
+"""Confirm every t("...") key referenced across src/**/*.astro exists in
+src/i18n/en.json.
+
+This only covers scalar lookups via the t() helper. Structured/list data
+accessed directly off useDictionary() (services.terms, process.steps,
+approach.card, stats.items) isn't string-keyed, so it can't be grepped the
+same way — that's covered instead by TypeScript via `astro check`, since
+useDictionary()'s return type comes straight from the en.json/es.json
+imports: a shape mismatch between the two locale files fails the build.
 """
 import json
 import pathlib
@@ -8,40 +15,45 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-INDEX = ROOT / "index.html"
-EN_LOCALE = ROOT / "locales" / "en.json"
+SRC = ROOT / "src"
+EN_LOCALE = SRC / "i18n" / "en.json"
 
-KEY_ATTR_RE = re.compile(r'data-i18n(?:-html|-aria)?="([^"]+)"')
+T_CALL_RE = re.compile(r't\(\s*["\']([\w.]+)["\']\s*\)')
 
-# Applied directly by js/i18n.js (document.title, <meta name="description">)
-# rather than via a data-i18n* attribute in the markup.
-HANDLED_OUTSIDE_MARKUP = {"meta.title", "meta.description"}
+
+def flatten(node, prefix=""):
+    keys = set()
+    if isinstance(node, dict):
+        for key, value in node.items():
+            keys |= flatten(value, f"{prefix}.{key}" if prefix else key)
+    elif isinstance(node, list):
+        for i, value in enumerate(node):
+            keys |= flatten(value, f"{prefix}[{i}]")
+    else:
+        keys.add(prefix)
+    return keys
 
 
 def main() -> int:
-    html = INDEX.read_text(encoding="utf-8")
-    used_keys = set(KEY_ATTR_RE.findall(html)) | HANDLED_OUTSIDE_MARKUP
-    defined_keys = set(json.loads(EN_LOCALE.read_text(encoding="utf-8")))
+    astro_files = sorted(SRC.rglob("*.astro"))
+    used_keys = set()
+    for path in astro_files:
+        used_keys |= set(T_CALL_RE.findall(path.read_text(encoding="utf-8")))
 
-    missing = used_keys - defined_keys
-    unused = defined_keys - used_keys
+    en = json.loads(EN_LOCALE.read_text(encoding="utf-8"))
+    defined_keys = flatten(en)
 
-    ok = True
+    missing = {k for k in used_keys if k not in defined_keys}
+
     if missing:
         print(
-            f"::error file=index.html::data-i18n keys referenced in HTML but "
-            f"missing from locales/en.json: {sorted(missing)}"
+            f"::error file=src/i18n/en.json::t() keys referenced in .astro "
+            f"files but missing from en.json: {sorted(missing)}"
         )
-        ok = False
-    if unused:
-        print(
-            f"::warning file=locales/en.json::Keys defined but not referenced "
-            f"in index.html (dead entries?): {sorted(unused)}"
-        )
+        return 1
 
-    if ok:
-        print(f"OK: {len(used_keys)} data-i18n keys used in index.html, all defined.")
-    return 0 if ok else 1
+    print(f"OK: {len(used_keys)} t() keys used across {len(astro_files)} .astro file(s), all defined.")
+    return 0
 
 
 if __name__ == "__main__":

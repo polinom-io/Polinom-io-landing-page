@@ -1,0 +1,20 @@
+---
+interface Props {
+  t: (key: string) => string;
+}
+
+const { t } = Astro.props;
+---
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-panel">
+      <h2>{t("contact.h2")}</h2>
+      <div class="contact-details">
+        <a href="mailto:hello@polinom.io">hello@polinom.io</a>
+        <span>{t("contact.note")}</span>
+      </div>
+      <a class="btn btn-primary" href="mailto:hello@polinom.io">{t("hero.ctaPrimary")}</a>
+    </div>
+  </div>
+</section>

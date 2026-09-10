@@ -1,11 +1,26 @@
 #!/usr/bin/env python3
-"""Validate every locales/*.json file and confirm they all define the same key set."""
+"""Validate every src/i18n/*.json file and confirm they all define the same
+set of leaf keys, recursing into nested objects and arrays."""
 import json
 import pathlib
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-LOCALES_DIR = ROOT / "locales"
+LOCALES_DIR = ROOT / "src" / "i18n"
+
+
+def flatten(node, prefix=""):
+    """Return the set of dotted/indexed paths to every leaf value in `node`."""
+    keys = set()
+    if isinstance(node, dict):
+        for key, value in node.items():
+            keys |= flatten(value, f"{prefix}.{key}" if prefix else key)
+    elif isinstance(node, list):
+        for i, value in enumerate(node):
+            keys |= flatten(value, f"{prefix}[{i}]")
+    else:
+        keys.add(prefix)
+    return keys
 
 
 def main() -> int:
@@ -26,28 +41,27 @@ def main() -> int:
     if not ok:
         return 1
 
-    reference_lang, reference_strings = next(iter(parsed.items()))
-    reference_keys = set(reference_strings)
+    flattened = {lang: flatten(data) for lang, data in parsed.items()}
+    reference_lang, reference_keys = next(iter(flattened.items()))
 
-    for lang, strings in parsed.items():
-        keys = set(strings)
+    for lang, keys in flattened.items():
         missing = reference_keys - keys
         extra = keys - reference_keys
         if missing:
             print(
-                f"::error file=locales/{lang}.json::Missing keys present in "
+                f"::error file=src/i18n/{lang}.json::Missing keys present in "
                 f"{reference_lang}.json: {sorted(missing)}"
             )
             ok = False
         if extra:
             print(
-                f"::error file=locales/{lang}.json::Extra keys not present in "
+                f"::error file=src/i18n/{lang}.json::Extra keys not present in "
                 f"{reference_lang}.json: {sorted(extra)}"
             )
             ok = False
 
     if ok:
-        print(f"OK: {len(files)} locale file(s), {len(reference_keys)} keys, all in sync.")
+        print(f"OK: {len(files)} locale file(s), {len(reference_keys)} leaf keys, all in sync.")
     return 0 if ok else 1
 
 

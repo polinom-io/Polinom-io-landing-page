@@ -7,23 +7,36 @@ on:
 
 jobs:
   validate:
-    name: Validate HTML and locale files
+    name: Validate types, locale files, build, and HTML
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Type-check Astro/TypeScript files
+        run: npm run check
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Install HTML validator
-        run: pip install html5validator
-
-      - name: Validate index.html against the HTML5 spec
-        run: html5validator --root . --match "index.html"
-
       - name: Check locale files are valid JSON and in sync
         run: python3 scripts/check_locales.py
 
-      - name: Check data-i18n keys match locales/en.json
+      - name: Check t() keys match src/i18n/en.json
         run: python3 scripts/check_i18n_keys.py
+
+      - name: Build the site
+        run: npm run build
+
+      - name: Install HTML validator
+        run: pip install html5validator
+
+      - name: Validate built HTML against the HTML5 spec
+        run: html5validator --root dist --match "*.html"

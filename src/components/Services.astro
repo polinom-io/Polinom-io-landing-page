@@ -1,0 +1,31 @@
+---
+import { useDictionary } from "../i18n/ui";
+
+interface Props {
+  lang: string;
+  t: (key: string) => string;
+}
+
+const { lang, t } = Astro.props;
+const terms = useDictionary(lang).services.terms;
+const colors = ["var(--blue)", "var(--cyan)", "var(--violet)", "var(--orange)"];
+---
+
+<section class="alt" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">{t("services.eyebrow")}</span>
+      <h2>{t("services.h2")}</h2>
+      <p>{t("services.p")}</p>
+    </div>
+    <div class="terms-grid">
+      {terms.map((term, i) => (
+        <div class="term-card" style={`--card-color: ${colors[i]};`}>
+          <span class="degree">{term.degree}</span>
+          <h3>{term.title}</h3>
+          <p>{term.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

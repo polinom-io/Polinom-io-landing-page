@@ -1,0 +1,83 @@
+{
+  "meta": {
+    "title": "Polinom.io",
+    "description": "Technology consultancy that decomposes business challenges into strategy, engineering, data, and execution."
+  },
+  "nav": {
+    "approach": "Approach",
+    "services": "Services",
+    "process": "Process",
+    "contact": "Contact"
+  },
+  "theme": {
+    "toggleLabel": "Toggle color theme"
+  },
+  "lang": {
+    "switchLabel": "Switch to Spanish"
+  },
+  "hero": {
+    "eyebrow": "Technology Consultancy",
+    "h1": "Business growth has a closed-form solution.",
+    "dek": "Polinom.io combines strategy, engineering, data, and execution into a single equation for your business — then solves it. No guesswork, no black boxes: every term is accountable to a result.",
+    "equation": {
+      "prefix": "P(business)",
+      "strategy": "Strategy",
+      "engineering": "Engineering",
+      "data": "Data",
+      "execution": "Execution"
+    },
+    "ctaPrimary": "Start a project",
+    "ctaGhost": "See our approach"
+  },
+  "approach": {
+    "eyebrow": "Approach",
+    "h2": "Every business problem decomposes into terms.",
+    "p1": "Most consultancies sell you one term at a time — a strategy deck, a dev shop, a data team — and leave you to integrate the rest. We build the whole polynomial: the compounding combination of decisions that actually moves revenue, margin, and speed.",
+    "p2": "We start by defining your variables — the real constraints of your market, stack, and team — then fit coefficients to them: how much weight strategy carries versus engineering versus data, for your business specifically. The result isn't a template. It's a function tuned to you.",
+    "card": {
+      "solvedFor": "// solved for",
+      "strategy": { "label": "strategy", "value": "market position, roadmap" },
+      "engineering": { "label": "engineering", "value": "architecture, delivery" },
+      "data": { "label": "data", "value": "pipelines, ML, decisioning" },
+      "execution": { "label": "execution", "value": "shipped, measured, iterated" },
+      "degree": { "prefix": "// degree of the polynomial =", "value": "complexity of your business" }
+    }
+  },
+  "services": {
+    "eyebrow": "Services",
+    "h2": "Four terms, one equation.",
+    "p": "Each engagement draws on some or all four terms — weighted to where your business needs the most help.",
+    "terms": [
+      { "degree": "x³", "title": "Strategy & Advisory", "body": "Technology roadmaps, build-vs-buy calls, and operating models tied to a P&L, not a slide deck." },
+      { "degree": "x²", "title": "Software Engineering", "body": "Product builds, platform modernization, and systems architecture designed to outlast the next funding round." },
+      { "degree": "x¹", "title": "Data & AI", "body": "Pipelines, applied ML, and decision systems that turn your operational data into a compounding asset." },
+      { "degree": "x⁰", "title": "Execution & Delivery", "body": "The constant term — always present. Embedded delivery teams that ship, monitor, and keep the solution correct." }
+    ]
+  },
+  "process": {
+    "eyebrow": "Process",
+    "h2": "How we solve for growth.",
+    "p": "The same four-step method underlies every engagement, scaled to the size of your equation.",
+    "steps": [
+      { "num": "Define the variables", "title": "Discover", "body": "Stakeholder interviews, systems audit, and market constraints mapped before a single coefficient is set." },
+      { "num": "Fit the model", "title": "Design", "body": "Strategy and architecture weighted to your actual data, team, and timeline — not a generic playbook." },
+      { "num": "Engineer the solution", "title": "Build", "body": "Embedded engineers and data specialists ship in short, reviewable increments alongside your team." },
+      { "num": "Deploy & differentiate", "title": "Scale", "body": "Launch, instrument, and iterate — so the curve keeps rising after the engagement ends." }
+    ]
+  },
+  "stats": {
+    "items": [
+      { "figure": "40+", "label": "Systems shipped to production" },
+      { "figure": "12", "label": "Industries served" },
+      { "figure": "3.1×", "label": "Average engagement ROI" },
+      { "figure": "98%", "label": "Client renewal rate" }
+    ]
+  },
+  "contact": {
+    "h2": "Let’s solve for growth.",
+    "note": "Engagements typically begin within two weeks."
+  },
+  "footer": {
+    "copyright": "© 2026 Polinom.io — technology consultancy."
+  }
+}

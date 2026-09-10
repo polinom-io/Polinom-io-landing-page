@@ -1,0 +1,30 @@
+---
+import { useDictionary } from "../i18n/ui";
+
+interface Props {
+  lang: string;
+  t: (key: string) => string;
+}
+
+const { lang, t } = Astro.props;
+const steps = useDictionary(lang).process.steps;
+---
+
+<section id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">{t("process.eyebrow")}</span>
+      <h2>{t("process.h2")}</h2>
+      <p>{t("process.p")}</p>
+    </div>
+    <div class="process-list">
+      {steps.map((step) => (
+        <div class="step">
+          <div class="num">{step.num}</div>
+          <h3>{step.title}</h3>
+          <p>{step.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

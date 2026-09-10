@@ -1,0 +1,51 @@
+---
+import { otherLang } from "../i18n/ui";
+
+interface Props {
+  lang: string;
+  t: (key: string) => string;
+}
+
+const { lang, t } = Astro.props;
+const target = otherLang(lang);
+const flags: Record<string, string> = { en: "🇺🇸", es: "🇪🇸" };
+
+// Default locale ("en") lives at the site root; "es" lives under /es/.
+const targetHref = target === "en" ? "/" : `/${target}/`;
+---
+
+<header class="site">
+  <div class="wrap nav">
+    <a href={lang === "en" ? "/" : `/${lang}/`} class="wordmark">polinom<sup>.io</sup></a>
+    <nav class="links">
+      <a href="#approach">{t("nav.approach")}</a>
+      <a href="#services">{t("nav.services")}</a>
+      <a href="#process">{t("nav.process")}</a>
+      <a href="#contact">{t("nav.contact")}</a>
+    </nav>
+    <div class="toggle-group">
+      <a class="lang-toggle" href={targetHref} aria-label={t("lang.switchLabel")}>
+        <span class="lang-flag" aria-hidden="true">{flags[target]}</span>{target.toUpperCase()}
+      </a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label={t("theme.toggleLabel")}>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const root = document.documentElement;
+  const toggle = document.getElementById("themeToggle");
+
+  toggle?.addEventListener("click", () => {
+    const current = root.getAttribute("data-theme");
+    const isDark = current === "dark" || (!current && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    const next = isDark ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try {
+      localStorage.setItem("polinom-theme", next);
+    } catch (e) {}
+  });
+</script>
