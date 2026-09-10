@@ -2,6 +2,7 @@
   var SUPPORTED = ['en', 'es'];
   var DEFAULT_LANG = 'en';
   var STORAGE_KEY = 'polinom-lang';
+  var FLAGS = { en: '🇺🇸', es: '🇪🇸' };
 
   function detectInitialLang() {
     try {
@@ -42,7 +43,7 @@
     var langToggle = document.getElementById('langToggle');
     if (langToggle) {
       var otherLang = lang === 'en' ? 'es' : 'en';
-      langToggle.textContent = otherLang.toUpperCase();
+      langToggle.innerHTML = '<span class="lang-flag" aria-hidden="true">' + FLAGS[otherLang] + '</span>' + otherLang.toUpperCase();
       langToggle.setAttribute('data-current-lang', lang);
       if (strings['lang.toggleLabel']) {
         langToggle.setAttribute('aria-label', strings['lang.toggleLabel']);

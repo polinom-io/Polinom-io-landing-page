@@ -181,6 +181,13 @@ nav.links a:focus-visible {
   color: var(--accent);
 }
 
+.toggle-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1.5rem;
+}
+
 .lang-toggle {
   border: 1px solid var(--border-strong);
   background: var(--surface);
@@ -194,13 +201,17 @@ nav.links a:focus-visible {
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
+  gap: 0.4em;
   justify-content: center;
   cursor: pointer;
-  margin-left: 1.5rem;
 }
 .lang-toggle:hover {
   border-color: var(--accent);
   color: var(--accent);
+}
+.lang-flag {
+  font-size: 0.95rem;
+  line-height: 1;
 }
 
 .theme-toggle {
@@ -214,7 +225,6 @@ nav.links a:focus-visible {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin-left: 0.75rem;
 }
 
 .theme-toggle:focus-visible,
