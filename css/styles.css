@@ -195,7 +195,15 @@ nav.links a:hover, nav.links a:focus-visible { color: var(--accent); }
 
 /* ---------- Hero ---------- */
 .hero {
+  position: relative;
   padding: 5rem 0 3.5rem;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   background-image:
     linear-gradient(var(--border) 1px, transparent 1px),
     linear-gradient(90deg, var(--border) 1px, transparent 1px);
@@ -204,6 +212,8 @@ nav.links a:hover, nav.links a:focus-visible { color: var(--accent); }
   -webkit-mask-image: linear-gradient(to bottom, black, transparent 95%);
   mask-image: linear-gradient(to bottom, black, transparent 95%);
 }
+
+.hero-inner { position: relative; z-index: 1; }
 
 .hero-inner { max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
 
