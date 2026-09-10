@@ -29,6 +29,10 @@ scripts/                 Python validation scripts, run in CI (see below)
 
 ## Local development
 
+Node version is pinned in `.nvmrc` (currently the latest Node.js LTS). If
+you use [nvm](https://github.com/nvm-sh/nvm), run `nvm use` before the
+commands below; CI reads the same file via `node-version-file`.
+
 ```bash
 npm install
 npm run dev       # http://localhost:4321, live reload
