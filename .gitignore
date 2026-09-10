@@ -1,4 +1,25 @@
+# OS
 .DS_Store
+
+# Astro / Node build output and dependencies
 node_modules/
 dist/
 .astro/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Coverage
+coverage
+.nyc_output
+
+# Misc
+.npm
+.node_repl_history
