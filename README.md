@@ -78,6 +78,13 @@ To add a language: copy `locales/en.json` to `locales/<code>.json`, translate
 every value (keep the keys identical), and add `<code>` to the `SUPPORTED`
 array in `js/i18n.js`.
 
+## CI/CD (proposed)
+
+`.github/workflows/` and `scripts/` contain a proposed GitHub Actions setup —
+not yet active anywhere since this repo has no GitHub remote yet. See
+[`.github/CI_PROPOSAL.md`](.github/CI_PROPOSAL.md) for the rationale and the
+one manual step (enabling GitHub Pages) needed once it's pushed.
+
 ## Content
 
 Marketing copy (stats, process steps, contact email) is placeholder text
