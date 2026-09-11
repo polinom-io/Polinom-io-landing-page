@@ -20,16 +20,23 @@ GitHub Pages once the Astro build produces `dist/`.
    can't be grepped, but `useDictionary()`'s return type comes straight from
    the `en.json`/`es.json` imports, so a shape mismatch between the two
    locale files fails the build here.
-2. **`scripts/check_locales.py`** — parses every file under `src/i18n/` as
+2. **`npm test`** (Playwright, `tests/`) — real rendered-layout checks that
+   `astro check` can't see, e.g. whether the header actually keeps a margin
+   from the viewport edge at mobile widths. Runs against `astro dev` (with
+   `ASTRO_DEV_BACKGROUND=0`, since `astro dev`/`astro preview` auto-detach
+   into the background when an AI agent is detected, which otherwise breaks
+   Playwright's webServer). The report uploads as a build artifact on
+   failure.
+3. **`scripts/check_locales.py`** — parses every file under `src/i18n/` as
    JSON and fails if any locale's leaf-key set (recursing into nested
    objects/arrays) doesn't exactly match the others.
-3. **`scripts/check_i18n_keys.py`** — extracts every key referenced via a
+4. **`scripts/check_i18n_keys.py`** — extracts every key referenced via a
    `t("...")` call anywhere in `src/**/*.astro` and fails if any of them
    aren't defined in `src/i18n/en.json` (a typo'd key otherwise throws at
    render time — `useTranslations()`'s `t()` throws on a key missing from
    both the active language and the English fallback).
-4. **`npm run build`** — the actual Astro static build.
-5. **HTML5 validation** (`html5validator`) — run against the *built* output
+5. **`npm run build`** — the actual Astro static build.
+6. **HTML5 validation** (`html5validator`) — run against the *built* output
    in `dist/`, not the source `.astro` files, so it's checking exactly what
    would ship.
 
@@ -38,7 +45,7 @@ proposal — it passes clean.
 
 ### `workflows/deploy.yml` — runs on push to `main`
 
-Runs the same five steps, then — only if they pass — uploads `dist/` as a
+Runs the same six steps, then — only if they pass — uploads `dist/` as a
 Pages artifact and deploys it via the official
 `actions/upload-pages-artifact` + `actions/deploy-pages` actions.
 
@@ -57,9 +64,12 @@ on its own.
 
 ## What this deliberately leaves out
 
-- **No visual regression / screenshot testing** — would need a headless
-  browser step and reference images to maintain; worth adding later if the
-  page keeps evolving, not proposed here.
+- **No pixel-level visual regression / screenshot diffing** — Playwright
+  now covers rendered *layout* (positions, visibility, overflow), but not
+  screenshot comparison against reference images. That's a heavier,
+  higher-maintenance category (baseline images to keep updated across every
+  intentional design change); worth adding later if it earns its keep, not
+  proposed here.
 - **No custom domain / CNAME setup** — out of scope until there's an actual
   domain decision to make.
 - **No dependency-update automation** (Dependabot/Renovate) — worth adding

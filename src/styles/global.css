@@ -143,7 +143,8 @@ header.site {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.1rem 0;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
 }
 
 .wordmark {

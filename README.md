@@ -108,6 +108,31 @@ what TypeScript already checks structurally:
 Run them with `npm run check-locales` / `npm run check-i18n-keys`, or
 `python3 scripts/<name>.py` directly.
 
+### Browser tests (`tests/`)
+
+[Playwright](https://playwright.dev) tests in `tests/` cover real rendered
+layout — things `astro check` and the scripts above can't see, like whether
+an element actually keeps a margin from the viewport edge at a given screen
+size. `tests/header-responsive.spec.ts` covers the header specifically
+(added after a real bug: `.nav`'s `padding: 1.1rem 0` was silently
+overwriting `.wrap`'s horizontal padding in the cascade, leaving the header
+flush against the edge on any screen narrower than ~1184px — masked on wide
+desktop windows by unrelated `max-width` auto-centering math).
+
+```bash
+npx playwright install --with-deps chromium   # once, to fetch the browser
+npm test
+```
+
+The suite drives its own dev server (`playwright.config.ts`'s `webServer`),
+so `npm run dev` doesn't need to be running first. One environment quirk:
+`astro dev`/`astro preview` auto-detach into the background when Astro
+detects an AI coding agent, which breaks Playwright's expectation that the
+server command stays in the foreground — the config sets
+`ASTRO_DEV_BACKGROUND=0` to opt out (documented for `astro dev`; `astro
+preview` has the same behavior but no documented opt-out, which is why
+tests run against the dev server rather than a production build).
+
 ## CI/CD (proposed)
 
 `.github/workflows/` contains a proposed GitHub Actions setup — not yet

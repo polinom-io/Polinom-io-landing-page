@@ -31,6 +31,12 @@ jobs:
       - name: Type-check Astro/TypeScript files
         run: npm run check
 
+      - name: Install Playwright's Chromium browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright tests
+        run: npm test
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -49,6 +55,14 @@ jobs:
 
       - name: Validate built HTML against the HTML5 spec
         run: html5validator --root dist --match "*.html"
+
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
 
       - name: Upload build as a Pages artifact
         uses: actions/upload-pages-artifact@v3
