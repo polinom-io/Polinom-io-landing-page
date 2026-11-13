@@ -1,2 +1,3 @@
 # Code owners for Polinom-io-landing-page. Enforced by the org default-branch ruleset (require_code_owner_review).
-* @polinom-io/px-core
+# User handles until the px-core team has write on this repo; then use @polinom-io/px-core.
+* @a-polinom-io @mvrioe
