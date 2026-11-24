@@ -1,0 +1,16 @@
+name: PR standard
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-standard-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  pr-standard:
+    uses: polinom-io/px-workflows-public/.github/workflows/pr-standard.yml@2e306475fe0169aa85e7f23057401ad4718e26f5 # v0.4.0
