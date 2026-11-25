@@ -708,3 +708,17 @@ footer {
   font-size: 0.85rem;
   opacity: 0.75;
 }
+
+.legal {
+  padding-block: 3rem 5rem;
+}
+
+.legal-page {
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.25rem;
+}
