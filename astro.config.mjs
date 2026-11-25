@@ -1,4 +1,6 @@
 import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://polinom.io",
@@ -9,4 +11,5 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  integrations: [mdx(), sitemap()],
 });

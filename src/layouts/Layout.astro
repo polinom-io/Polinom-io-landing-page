@@ -5,9 +5,11 @@ interface Props {
   lang: string;
   title: string;
   description: string;
+  /** False for pages with no Spanish translation yet: drops the es alternate. */
+  hasSpanishVersion?: boolean;
 }
 
-const { lang, title, description } = Astro.props;
+const { lang, title, description, hasSpanishVersion = true } = Astro.props;
 
 // English lives at the root and Spanish under /es/ (prefixDefaultLocale: false).
 const pathWithoutLocale = Astro.url.pathname.replace(/^\/es(?=\/|$)/, "") || "/";
@@ -27,7 +29,7 @@ const ogImageURL = new URL("/og-image.png", Astro.site);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     <link rel="alternate" hreflang="en" href={englishURL} />
-    <link rel="alternate" hreflang="es" href={spanishURL} />
+    {hasSpanishVersion && <link rel="alternate" hreflang="es" href={spanishURL} />}
     <link rel="alternate" hreflang="x-default" href={englishURL} />
 
     <meta property="og:type" content="website" />

@@ -7,7 +7,8 @@
     "approach": "Approach",
     "services": "Services",
     "process": "Process",
-    "contact": "Contact"
+    "contact": "Contact",
+    "blog": "Blog"
   },
   "theme": {
     "toggleLabel": "Toggle color theme"
@@ -84,5 +85,12 @@
     "title": "Page not found",
     "body": "The page you're looking for doesn't exist or has moved.",
     "cta": "Back to home"
+  },
+  "blog": {
+    "eyebrow": "// notes",
+    "indexTitle": "Blog",
+    "indexDescription": "Notes on strategy, engineering, data and execution from the Polinom.io team.",
+    "emptyState": "No posts yet.",
+    "backToBlog": "← All posts"
   }
 }
