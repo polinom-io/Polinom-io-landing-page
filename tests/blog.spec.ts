@@ -11,7 +11,7 @@ test.describe("Blog index", () => {
   test("lists every English post with a link to it", async ({ page }) => {
     await page.goto("/blog/");
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
-    await expect(page.locator("h1")).toHaveText("Blog");
+    await expect(page.locator("main h1")).toHaveText("Blog");
     for (const { slug, title } of POSTS) {
       await expect(page.locator(`a[href="/blog/${slug}/"]`)).toContainText(title);
     }
