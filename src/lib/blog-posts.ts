@@ -22,3 +22,23 @@ export function formatPostDate(date: Date, locale: BlogLocale): string {
     timeZone: "UTC",
   });
 }
+
+/** Path of the blog index for `locale`: English at the root, Spanish under /es/. */
+export function blogIndexPath(locale: BlogLocale): string {
+  return locale === "es" ? "/es/blog/" : "/blog/";
+}
+
+export function postPath(post: BlogPost): string {
+  return `${blogIndexPath(post.data.locale)}${postSlug(post)}/`;
+}
+
+/** The same post in the other language, if it has been published. */
+export async function findTranslation(post: BlogPost): Promise<BlogPost | undefined> {
+  const otherLocale: BlogLocale = post.data.locale === "en" ? "es" : "en";
+  const candidates = await getPublishedPosts(otherLocale);
+  return candidates.find((candidate) => postSlug(candidate) === postSlug(post));
+}
+
+export function otherBlogLocale(locale: BlogLocale): BlogLocale {
+  return locale === "en" ? "es" : "en";
+}

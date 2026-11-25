@@ -1,0 +1,48 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../Header.astro";
+import Footer from "../Footer.astro";
+import { useTranslations } from "../../i18n/ui";
+import {
+  blogIndexPath,
+  formatPostDate,
+  getPublishedPosts,
+  otherBlogLocale,
+  postPath,
+  type BlogLocale,
+} from "../../lib/blog-posts";
+
+interface Props {
+  lang: BlogLocale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const posts = await getPublishedPosts(lang);
+---
+
+<Layout lang={lang} title={`${t("blog.indexTitle")} — Polinom.io`} description={t("blog.indexDescription")}>
+  <Header lang={lang} t={t} translationHref={blogIndexPath(otherBlogLocale(lang))} />
+  <main id="top" class="wrap blog">
+    <div class="section-head">
+      <span class="eyebrow">{t("blog.eyebrow")}</span>
+      <h1>{t("blog.indexTitle")}</h1>
+      <p>{t("blog.indexDescription")}</p>
+    </div>
+    {posts.length === 0 && <p>{t("blog.emptyState")}</p>}
+    <div class="blog-list">
+      {
+        posts.map((post) => (
+          <a class="blog-card" href={postPath(post)}>
+            <time class="eyebrow" datetime={post.data.pubDate.toISOString()}>
+              {formatPostDate(post.data.pubDate, lang)}
+            </time>
+            <h2>{post.data.title}</h2>
+            <p>{post.data.description}</p>
+          </a>
+        ))
+      }
+    </div>
+  </main>
+  <Footer lang={lang} t={t} />
+</Layout>
