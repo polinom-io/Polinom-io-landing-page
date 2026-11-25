@@ -1,0 +1,38 @@
+---
+import { render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../Header.astro";
+import Footer from "../Footer.astro";
+import { useTranslations } from "../../i18n/ui";
+import { blogIndexPath, findTranslation, formatPostDate, postPath, type BlogPost } from "../../lib/blog-posts";
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+const lang = post.data.locale;
+const t = useTranslations(lang);
+const translation = await findTranslation(post);
+const { Content } = await render(post);
+---
+
+<Layout
+  lang={lang}
+  title={`${post.data.title} — Polinom.io`}
+  description={post.data.description}
+  hasTranslation={translation !== undefined}
+>
+  <Header lang={lang} t={t} translationHref={translation ? postPath(translation) : undefined} />
+  <main id="top" class="wrap blog">
+    <article class="blog-post">
+      <a class="back-link" href={blogIndexPath(lang)}>{t("blog.backToBlog")}</a>
+      <h1>{post.data.title}</h1>
+      <time class="post-meta" datetime={post.data.pubDate.toISOString()}>
+        {formatPostDate(post.data.pubDate, lang)}
+      </time>
+      <Content />
+    </article>
+  </main>
+  <Footer lang={lang} t={t} />
+</Layout>

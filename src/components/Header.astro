@@ -4,14 +4,16 @@ import { otherLang } from "../i18n/ui";
 interface Props {
   lang: string;
   t: (key: string) => string;
+  /** Same page in the other language; defaults to the other language's home. */
+  translationHref?: string;
 }
 
-const { lang, t } = Astro.props;
+const { lang, t, translationHref } = Astro.props;
 const target = otherLang(lang);
 const flags: Record<string, string> = { en: "🇺🇸", es: "🇪🇸" };
 
 // Default locale ("en") lives at the site root; "es" lives under /es/.
-const targetHref = target === "en" ? "/" : `/${target}/`;
+const targetHref = translationHref ?? (target === "en" ? "/" : `/${target}/`);
 const homeHref = lang === "en" ? "/" : `/${lang}/`;
 // Section anchors must point at the home page so they work from any page.
 const onHome = Astro.url.pathname === homeHref;
@@ -26,7 +28,7 @@ const sectionHref = (id: string): string => (onHome ? `#${id}` : `${homeHref}#${
       <a href={sectionHref("services")}>{t("nav.services")}</a>
       <a href={sectionHref("process")}>{t("nav.process")}</a>
       <a href={sectionHref("contact")}>{t("nav.contact")}</a>
-      {lang === "en" && <a href="/blog/">{t("nav.blog")}</a>}
+      <a href={lang === "en" ? "/blog/" : `/${lang}/blog/`}>{t("nav.blog")}</a>
     </nav>
     <div class="toggle-group">
       <a class="lang-toggle" href={targetHref} aria-label={t("lang.switchLabel")}>

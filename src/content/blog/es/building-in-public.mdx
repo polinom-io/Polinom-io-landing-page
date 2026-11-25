@@ -1,0 +1,16 @@
+---
+title: "Por qué este sitio es el caso de estudio"
+description: "Todavía no hay portafolio, así que el propio sitio tiene que ser la prueba del trabajo: lo que esa restricción nos obligó a hacer bien."
+pubDate: 2026-09-14
+locale: es
+---
+
+La landing page de una consultora recién creada tiene un problema evidente: todavía no tienes casos de estudio. Las opciones honestas son inventar una trayectoria, esconderse detrás de frases vagas como "confían en nosotros" o hacer que el propio sitio sea la evidencia. Elegimos la tercera, y eso le puso al desarrollo restricciones que un sitio de marketing normal no tiene.
+
+**El rendimiento tenía que ser real, no declarado.** Lo que propone esta página es que la disciplina de ingeniería se acumula, así que un sitio lento y pesado diciendo eso sería una contradicción que cualquier visitante notaría en dos segundos. En concreto: el sitio se publica como HTML estático generado con Astro, casi sin JavaScript en el cliente. Las dos tipografías (Monaspace Xenon y Hack) están alojadas en el propio sitio como archivos `.woff2` con `font-display: swap`, no incrustadas en base64. Un borrador de diseño de esta misma página llegó a incluir cerca de un megabyte de fuentes incrustadas en el `<head>`, justo el tipo de cosa que se ve bien en un mockup y pésimo en producción.
+
+**Bilingüe tenía que significar indexable de verdad, no un cambio de idioma en el cliente.** Una versión anterior de esta página detectaba el idioma del navegador y cambiaba el texto visible después de cargar. En una demo no se nota, pero en la práctica es malo: los buscadores solo ven la versión que venía en el HTML inicial, y los visitantes alcanzan a ver el idioma equivocado antes de que corra el script. La solución real fue estructural: `/` y `/es/` como rutas estáticas generadas por separado, cada una con su `<html lang>` correcto y sus propios metadatos, en vez de una página que finge ser dos.
+
+**Nada de cifras inventadas.** Habría sido fácil llenar la sección de credibilidad con una fila de estadísticas (proyectos entregados, tasa de renovación de clientes, ROI promedio), como hace la mayoría de las consultoras. Todavía no tenemos esa historia, así que esa sección describe cómo se estructuran los proyectos en lugar de una trayectoria que no existe. Es menos llamativo. Tampoco es algo que después tengamos que desmentir.
+
+Nada de esto es un ángulo de marketing puesto encima del sitio: es la restricción real de no tener todavía nada más que mostrar. Si funciona, el próximo artículo aquí probablemente será sobre el primer proyecto y no sobre el sitio que nos llevó hasta él.
