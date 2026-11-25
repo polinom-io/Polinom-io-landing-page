@@ -25,6 +25,14 @@ const ogImageURL = new URL("/og-image.png", Astro.site);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- Apply a stored theme override before first paint to avoid a flash of the wrong theme. -->
+    <script is:inline>
+      try {
+        var stored = localStorage.getItem("polinom-theme");
+        if (stored === "light" || stored === "dark") document.documentElement.setAttribute("data-theme", stored);
+      } catch (e) {}
+    </script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
@@ -55,17 +63,5 @@ const ogImageURL = new URL("/og-image.png", Astro.site);
   </head>
   <body>
     <slot />
-    <script is:inline>
-      (function () {
-        var root = document.documentElement;
-        var stored = null;
-        try {
-          stored = localStorage.getItem("polinom-theme");
-        } catch (e) {}
-        if (stored === "light" || stored === "dark") {
-          root.setAttribute("data-theme", stored);
-        }
-      })();
-    </script>
   </body>
 </html>
