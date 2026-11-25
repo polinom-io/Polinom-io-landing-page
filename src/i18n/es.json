@@ -7,7 +7,8 @@
     "approach": "Enfoque",
     "services": "Servicios",
     "process": "Proceso",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "blog": "Blog"
   },
   "theme": {
     "toggleLabel": "Cambiar tema de color"
@@ -84,5 +85,12 @@
     "title": "Página no encontrada",
     "body": "La página que buscas no existe o fue movida.",
     "cta": "Volver al inicio"
+  },
+  "blog": {
+    "eyebrow": "// notas",
+    "indexTitle": "Blog",
+    "indexDescription": "Notas sobre estrategia, ingeniería, datos y ejecución del equipo de Polinom.io.",
+    "emptyState": "Aún no hay publicaciones.",
+    "backToBlog": "← Todas las publicaciones"
   }
 }

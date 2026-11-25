@@ -12,16 +12,21 @@ const flags: Record<string, string> = { en: "🇺🇸", es: "🇪🇸" };
 
 // Default locale ("en") lives at the site root; "es" lives under /es/.
 const targetHref = target === "en" ? "/" : `/${target}/`;
+const homeHref = lang === "en" ? "/" : `/${lang}/`;
+// Section anchors must point at the home page so they work from any page.
+const onHome = Astro.url.pathname === homeHref;
+const sectionHref = (id: string): string => (onHome ? `#${id}` : `${homeHref}#${id}`);
 ---
 
 <header class="site">
   <div class="wrap nav">
-    <a href={lang === "en" ? "/" : `/${lang}/`} class="wordmark">polinom<sup>.io</sup></a>
+    <a href={homeHref} class="wordmark">polinom<sup>.io</sup></a>
     <nav class="links">
-      <a href="#approach">{t("nav.approach")}</a>
-      <a href="#services">{t("nav.services")}</a>
-      <a href="#process">{t("nav.process")}</a>
-      <a href="#contact">{t("nav.contact")}</a>
+      <a href={sectionHref("approach")}>{t("nav.approach")}</a>
+      <a href={sectionHref("services")}>{t("nav.services")}</a>
+      <a href={sectionHref("process")}>{t("nav.process")}</a>
+      <a href={sectionHref("contact")}>{t("nav.contact")}</a>
+      {lang === "en" && <a href="/blog/">{t("nav.blog")}</a>}
     </nav>
     <div class="toggle-group">
       <a class="lang-toggle" href={targetHref} aria-label={t("lang.switchLabel")}>
