@@ -669,3 +669,7 @@ footer {
 .footer-row .wordmark {
   font-size: 0.9rem;
 }
+.not-found {
+  padding-block: 6rem;
+  text-align: center;
+}

@@ -79,5 +79,10 @@
   },
   "footer": {
     "copyright": "© 2026 Polinom.io — technology consultancy."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you're looking for doesn't exist or has moved.",
+    "cta": "Back to home"
   }
 }

@@ -79,5 +79,10 @@
   },
   "footer": {
     "copyright": "© 2026 Polinom.io — consultoría tecnológica."
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "body": "La página que buscas no existe o fue movida.",
+    "cta": "Volver al inicio"
   }
 }

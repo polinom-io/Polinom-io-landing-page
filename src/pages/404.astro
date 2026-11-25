@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { useTranslations } from "../i18n/ui";
+
+// Static hosts serve this one file for every unmatched path, whatever the
+// locale, so it can't know the visitor's language: use the default (English).
+const lang = "en";
+const t = useTranslations(lang);
+---
+
+<Layout lang={lang} title={`${t("notFound.title")} — Polinom.io`} description={t("meta.description")}>
+  <Header lang={lang} t={t} />
+  <main id="top" class="wrap not-found">
+    <h1>{t("notFound.title")}</h1>
+    <p>{t("notFound.body")}</p>
+    <a class="btn btn-primary" href="/">{t("notFound.cta")}</a>
+  </main>
+  <Footer lang={lang} t={t} />
+</Layout>
