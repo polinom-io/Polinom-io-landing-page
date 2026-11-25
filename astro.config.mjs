@@ -1,6 +1,9 @@
 import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
+  site: "https://polinom.io",
   i18n: {
     defaultLocale: "en",
     locales: ["en", "es"],
@@ -8,4 +11,5 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+  integrations: [mdx(), sitemap()],
 });

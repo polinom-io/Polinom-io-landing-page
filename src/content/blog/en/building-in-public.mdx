@@ -1,0 +1,16 @@
+---
+title: "Why this site is the case study"
+description: "There's no portfolio yet, so the site itself has to be the proof of work — what that constraint actually forced us to get right."
+pubDate: 2026-09-14
+locale: en
+---
+
+There's an obvious problem with a brand-new consultancy's landing page: you have no case studies yet. The honest options are to fabricate a track record, hide behind vague "trusted by" language, or make the site itself the evidence. We went with the third one, which meant the build had constraints a normal marketing site doesn't.
+
+**Performance had to be real, not claimed.** The pitch on this page is that engineering discipline compounds — so a slow, bloated site pitching that would be a contradiction visitors could feel within two seconds. Concretely: the site ships as static HTML from Astro, with near-zero client-side JavaScript. The two typefaces (Monaspace Xenon and Hack) are self-hosted as proper `.woff2` files with `font-display: swap`, not inlined as base64 — a design draft of this same page once shipped about a megabyte of inlined font data in the `<head>`, which is exactly the kind of thing that looks fine in a mockup and terrible in production.
+
+**Bilingual had to mean actually indexable, not a client-side swap.** An earlier version of this page detected your browser language and swapped the visible text after the page loaded. That's invisible in a demo and bad in practice: search engines only ever see the version that was in the initial HTML, and visitors get a flash of the wrong language before the script runs. The real fix was structural — `/` and `/es/` as separately generated static routes, each with correct `<html lang>` and its own metadata, rather than one page pretending to be two.
+
+**No invented numbers.** It would have been easy to fill the credibility section with a stats row — engagements shipped, client renewal rate, average ROI — the way most consultancy sites do. We don't have that history yet, so that section describes how engagements are structured instead of a track record that doesn't exist. It's less flashy. It's also not a claim we'd have to walk back later.
+
+None of this is a marketing angle layered on top of the site — it's the actual constraint of not having anything else to point to yet. If it holds up, the next post in this space will probably be about the first engagement instead of the site that got us there.
