@@ -1,4 +1,7 @@
 {
+  "a11y": {
+    "skipToContent": "Saltar al contenido"
+  },
   "meta": {
     "title": "Polinom.io",
     "description": "Consultoría tecnológica que descompone los desafíos de negocio en estrategia, ingeniería, datos y ejecución."

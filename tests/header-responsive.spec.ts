@@ -74,3 +74,12 @@ for (const { label: pageLabel, path } of PAGES) {
     });
   });
 }
+
+test("skip link moves focus to the main content", async ({ page }) => {
+  await page.goto("/es/");
+  await page.keyboard.press("Tab");
+  const skip = page.locator(".skip-link");
+  await expect(skip).toBeFocused();
+  await expect(skip).toHaveText("Saltar al contenido");
+  await expect(skip).toBeInViewport();
+});
