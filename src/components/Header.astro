@@ -20,6 +20,7 @@ const onHome = Astro.url.pathname === homeHref;
 const sectionHref = (id: string): string => (onHome ? `#${id}` : `${homeHref}#${id}`);
 ---
 
+<a class="skip-link" href="#top">{t("a11y.skipToContent")}</a>
 <header class="site">
   <div class="wrap nav">
     <a href={homeHref} class="wordmark">polinom<sup>.io</sup></a>

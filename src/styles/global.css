@@ -136,6 +136,20 @@ a {
 }
 
 /* ---------- Header ---------- */
+.skip-link {
+  position: absolute;
+  inset-inline-start: 1rem;
+  inset-block-start: -3rem;
+  z-index: 50;
+  padding: 0.5rem 1rem;
+  background: var(--surface-raised);
+  color: var(--text);
+}
+
+.skip-link:focus-visible {
+  inset-block-start: 1rem;
+}
+
 header.site {
   position: sticky;
   top: 0;
