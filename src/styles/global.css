@@ -23,6 +23,7 @@
 }
 
 :root {
+  color-scheme: light dark;
   --bg: #fdf6e3;
   --surface: #f6efdc;
   --surface-raised: #eee8d5;
@@ -58,7 +59,12 @@
   }
 }
 
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
 :root[data-theme="dark"] {
+  color-scheme: dark;
   --bg: #002b36;
   --surface: #023642;
   --surface-raised: #073642;

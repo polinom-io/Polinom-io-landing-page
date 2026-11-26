@@ -45,14 +45,30 @@ const sectionHref = (id: string): string => (onHome ? `#${id}` : `${homeHref}#${
 <script>
   const root = document.documentElement;
   const toggle = document.getElementById("themeToggle");
+  const KEY = "polinom-theme";
+  const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+  // Two states: follow the system (nothing stored) or an explicit override of the opposite scheme.
+  const apply = (value: string | null) => {
+    if (value === "light" || value === "dark") root.setAttribute("data-theme", value);
+    else root.removeAttribute("data-theme");
+  };
 
   toggle?.addEventListener("click", () => {
     const current = root.getAttribute("data-theme");
-    const isDark = current === "dark" || (!current && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    const next = isDark ? "light" : "dark";
-    root.setAttribute("data-theme", next);
+    const renderedDark = current ? current === "dark" : systemDark.matches;
+    const target = renderedDark ? "light" : "dark";
+    // Back to the system scheme: drop the override instead of pinning it.
+    const stored = (target === "dark") === systemDark.matches ? null : target;
+    apply(stored);
     try {
-      localStorage.setItem("polinom-theme", next);
+      if (stored) localStorage.setItem(KEY, stored);
+      else localStorage.removeItem(KEY);
     } catch (e) {}
+  });
+
+  // Keep tabs in sync when the override changes elsewhere.
+  window.addEventListener("storage", (event) => {
+    if (event.key === KEY) apply(event.newValue);
   });
 </script>
