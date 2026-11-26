@@ -1,6 +1,6 @@
 # Intent: adopt the px-ds design system on the landing page
 
-**Status:** G1 proposal · **Created:** 2026-11-25 · **Repos:** `polinom-io-landing-page` (lead), `px-ds` (provider)
+**Status:** G1 proposal, decisions taken · **Created:** 2026-11-25 · **Repos:** `polinom-io-landing-page` (lead), `px-ds` (provider)
 
 ## Why
 
@@ -34,8 +34,8 @@ Landing: commit `896b097`, Astro 7, no UI framework, one stylesheet (`src/styles
 
 TreatMint product page; new marketing sections beyond what this site needs (MKT-04+); content changes.
 
-## Open decisions (owner: Mario Espinoza)
+## Decisions (Mario Espinoza, 2026-11-25)
 
-1. A3: drop Monaspace Xenon for Atkinson Hyperlegible Next, or propose a display role in px-ds?
-2. A5: build Hero/Feature grid/CTA in px-ds first (slower, reusable), or migrate the landing on tokens now and extract later?
-3. A8: fix the spec or rename the repo?
+1. A3: drop Monaspace Xenon; the site follows px-ds type (Atkinson Hyperlegible Next + Hack). Font subsetting moves to px-ds (U3).
+2. A5: migrate the landing on px-ds tokens and existing components first; extract Hero, Feature grid and CTA into px-ds afterwards, with this site as the reference (U6, U7 follow U5).
+3. A8: rename this repo to `px-landing-page` to match the px-ds spec (U8 becomes the rename, done by an org owner).

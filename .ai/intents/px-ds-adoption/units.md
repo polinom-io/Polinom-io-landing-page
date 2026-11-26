@@ -7,11 +7,11 @@ Each unit is one or more bolts; each bolt is one squash PR in the owning repo. C
 | U1 | landing | Package access: `.npmrc` scope mapping, Actions secret for a fine-grained `read:packages` token in CI and deploy, `@astrojs/react` + `react` installed, px-ds `tokens.css` imported with no visual change yet | — | CI and deploy green with px-ds installed |
 | U2 | landing | Theme attributes: `data-theme="px"`, mode on `data-mode`, pre-paint script and toggle moved to it | U1 | A1 criteria pass; tests updated |
 | U3 | px-ds | Font subsetting for the web package (Latin range, `unicode-range`), documented; release | — | New px-ds release with subset fonts |
-| U4 | landing | Tokens: replace the local palette, type, spacing, radius and shadow with px-ds semantic tokens and fonts; delete local font files | U2, U3, decision 1 | Acceptance criteria 2–3 |
+| U4 | landing | Tokens: replace the local palette, type, spacing, radius and shadow with px-ds semantic tokens and fonts; delete local font files (Monaspace Xenon dropped) | U2, U3 | Acceptance criteria 2–3 |
 | U5 | landing | Components: Button, Card, Stat, CurveDivider from px-ds | U4 | Local equivalents deleted |
-| U6 | px-ds | MKT-01 Hero, MKT-02 Feature grid, MKT-03 CTA specs and React components, landing as reference | decision 2 | Components released |
+| U6 | px-ds | MKT-01 Hero, MKT-02 Feature grid, MKT-03 CTA specs and React components, landing as reference | U5 | Components released |
 | U7 | landing | Adopt MKT components | U6 | Section markup comes from px-ds |
-| U8 | px-ds | Spec fix for the landing repo name (or rename) | decision 3 | Spec matches reality |
+| U8 | landing | Rename the repo to `px-landing-page` (org owner, repo settings); then update local remotes, org repo lists and any badge or link to the old name. GitHub redirects the old URL; the Pages custom domain is unchanged | — | Repo name matches the px-ds spec |
 
 ## Sessions
 
