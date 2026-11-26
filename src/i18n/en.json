@@ -99,16 +99,12 @@
   },
   "privacy": {
     "title": "Privacy Policy",
-    "updated": "Last updated: September 2026",
+    "updated": "Last updated: November 2026",
     "intro": "This page explains what information Polinom.io collects when you visit this site, and why.",
-    "h2Booking": "Booking a call",
-    "pBooking": "When you book a call through the scheduler embedded on this site, Calendly collects the information you provide directly — typically your name, email address, and anything you write in the booking form. That information is used to confirm, remind, and (if needed) reschedule the call, and to prepare for the conversation. It is handled under Calendly's own privacy policy, since the booking flow runs on Calendly's infrastructure, not ours.",
     "h2Email": "Email",
     "pEmail": "If you write to hello@polinom.io directly, we keep that correspondence to respond to you and, where relevant, to follow up about a potential engagement. We don't add your email to any marketing list without asking first.",
-    "h2Analytics": "Analytics",
-    "pAnalytics": "With your consent (see the banner shown on your first visit), this site uses Google Analytics to understand which pages are visited and how. Analytics cookies are not set until you accept them, and you can decline without losing access to anything on the site. You can withdraw consent at any time by clearing your browser's cookies for this site.",
     "h2Rights": "Your choices",
-    "pRights": "You can decline analytics cookies, and you can always reach out to hello@polinom.io to ask what information we hold about you or to request it be deleted.",
+    "pRights": "You can write to hello@polinom.io at any time to ask what information we hold about you or to request that it be deleted.",
     "h2Contact": "Questions",
     "pContact": "For anything about this policy, write to hello@polinom.io."
   }

@@ -11,7 +11,13 @@ for (const { label, lang, home, path, heading, footerLabel } of PAGES) {
       await page.goto(path);
       await expect(page.locator("html")).toHaveAttribute("lang", lang);
       await expect(page.locator("main h1")).toHaveText(heading);
-      await expect(page.locator("main h2")).toHaveCount(5);
+      await expect(page.locator("main h2")).toHaveCount(3);
+    });
+
+    test("describes only processing the site does today", async ({ page }) => {
+      await page.goto(path);
+      const policy = page.locator("main");
+      await expect(policy).not.toContainText(/calendly|google analytics|cookie|banner|aviso/i);
     });
 
     test("is linked from the footer of the home page", async ({ page }) => {

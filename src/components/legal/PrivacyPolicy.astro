@@ -11,7 +11,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const privacyPath = (locale: string): string => (locale === "en" ? "/privacy/" : `/${locale}/privacy/`);
-const sections = ["Booking", "Email", "Analytics", "Rights", "Contact"] as const;
+const sections = ["Email", "Rights", "Contact"] as const;
 ---
 
 <Layout lang={lang} title={`${t("privacy.title")} — Polinom.io`} description={t("privacy.intro")}>
