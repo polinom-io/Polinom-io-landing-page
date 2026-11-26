@@ -1,4 +1,6 @@
 ---
+import { CurveDivider } from "@polinom-io/px-ds-react";
+
 interface Props {
   t: (key: string) => string;
 }
@@ -23,11 +25,4 @@ const { t } = Astro.props;
   </div>
 </section>
 
-<div class="curve-divider">
-  <svg viewBox="0 0 1200 160" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <line x1="0" y1="140" x2="1200" y2="140" class="axis" stroke-width="1"></line>
-    <path d="M0,130 C 260,132 320,60 560,78 C 780,94 820,20 1200,14" class="curve" fill="none" stroke-width="2.5"></path>
-    <circle cx="560" cy="78" r="4.5" class="dot-primary"></circle>
-    <circle cx="1200" cy="14" r="4.5" class="dot-secondary"></circle>
-  </svg>
-</div>
+<CurveDivider />

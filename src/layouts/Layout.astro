@@ -1,7 +1,7 @@
 ---
-// px-ds tokens load first; the site's own styles still win until the token
-// migration (U4) replaces them.
+// px-ds tokens and component styles load before the site's own styles.
 import "@polinom-io/px-ds-react/tokens.css";
+import "@polinom-io/px-ds-react/styles.css";
 import "../styles/global.css";
 
 interface Props {
