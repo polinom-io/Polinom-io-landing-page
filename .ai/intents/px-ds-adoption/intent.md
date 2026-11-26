@@ -37,5 +37,6 @@ TreatMint product page; new marketing sections beyond what this site needs (MKT-
 ## Decisions (Mario Espinoza, 2026-11-25)
 
 1. A3: drop Monaspace Xenon; the site follows px-ds type (Atkinson Hyperlegible Next + Hack). Font subsetting moves to px-ds (U3).
+   Update 2026-11-26: U3 is on hold. U4 ships with the px-ds 0.2.2 fonts as they are (about 315 KB woff2); dropping Monaspace Xenon (584 KB) is most of the saving. Subsetting comes later as a performance improvement (px-ds#23).
 2. A5: migrate the landing on px-ds tokens and existing components first; extract Hero, Feature grid and CTA into px-ds afterwards, with this site as the reference (U6, U7 follow U5).
 3. A8: rename this repo to `px-landing-page` to match the px-ds spec (U8 becomes the rename, done by an org owner).
