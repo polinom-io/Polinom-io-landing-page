@@ -1,9 +1,10 @@
 @font-face {
-  font-family: "Monaspace Xenon";
+  font-family: "Px Xenon";
   font-weight: 200 800;
   font-style: normal;
   font-display: swap;
-  src: url("/fonts/monaspace-xenon-var.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-209F, U+20AC, U+2122, U+2190-2199, U+2212, U+2215;
+  src: url("/fonts/px-xenon-var.woff2") format("woff2");
 }
 
 @font-face {
@@ -11,6 +12,7 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-209F, U+20AC, U+2122, U+2190-2199, U+2212, U+2215;
   src: url("/fonts/hack-regular.woff2") format("woff2");
 }
 
@@ -19,6 +21,7 @@
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-209F, U+20AC, U+2122, U+2190-2199, U+2212, U+2215;
   src: url("/fonts/hack-bold.woff2") format("woff2");
 }
 
@@ -37,7 +40,7 @@
   --orange: #bd4b1c;
   --accent: var(--blue);
   --shadow: 0 20px 50px -30px rgba(0, 50, 63, 0.45);
-  --font-display: "Monaspace Xenon", "Iowan Old Style", "Palatino Linotype", serif;
+  --font-display: "Px Xenon", "Iowan Old Style", "Palatino Linotype", serif;
   --font-body: "Hack", "SF Mono", Consolas, monospace;
   --font-mono: "Hack", "SF Mono", Consolas, monospace;
 }

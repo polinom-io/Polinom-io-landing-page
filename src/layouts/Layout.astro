@@ -57,6 +57,10 @@ const ogImageURL = new URL("/og-image.png", Astro.site);
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <!-- Fonts used above the fold; subset to Latin (see public/fonts/README.md). -->
+    <link rel="preload" href="/fonts/px-xenon-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/hack-regular.woff2" as="font" type="font/woff2" crossorigin />
+
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
