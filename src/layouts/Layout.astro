@@ -33,6 +33,16 @@ const ogImageURL = new URL("/og-image.png", Astro.site);
     <script is:inline>
       try {
         var stored = localStorage.getItem("px-mode");
+        // Migrate overrides saved before the px naming rule (key "polinom-theme").
+        // Remove once old overrides have had time to move (added 2026-11-26).
+        var legacy = localStorage.getItem("polinom-theme");
+        if (legacy !== null) {
+          if (stored === null && (legacy === "light" || legacy === "dark")) {
+            stored = legacy;
+            localStorage.setItem("px-mode", stored);
+          }
+          localStorage.removeItem("polinom-theme");
+        }
         if (stored === "light" || stored === "dark") document.documentElement.setAttribute("data-mode", stored);
       } catch (e) {}
     </script>
