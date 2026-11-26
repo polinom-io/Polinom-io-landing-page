@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  packages: read # install @polinom-io/px-ds-react from GitHub Packages
   pages: write
   id-token: write
 
@@ -25,8 +26,12 @@ jobs:
         with:
           node-version-file: ".nvmrc"
           cache: "npm"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@polinom-io"
 
       - run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Type-check Astro/TypeScript files
         run: npm run check
