@@ -32,7 +32,7 @@ const ogImageURL = new URL("/og-image.png", Astro.site);
     <!-- Apply a stored mode override before first paint to avoid a flash of the wrong mode. -->
     <script is:inline>
       try {
-        var stored = localStorage.getItem("polinom-theme");
+        var stored = localStorage.getItem("px-mode");
         if (stored === "light" || stored === "dark") document.documentElement.setAttribute("data-mode", stored);
       } catch (e) {}
     </script>

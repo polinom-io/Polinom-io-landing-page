@@ -19,7 +19,7 @@ test.describe("Theme and mode attributes", () => {
 
 test.describe("Mode toggle", () => {
   test("a stored override applies before scripts in the body run", async ({ page }) => {
-    await page.addInitScript(() => localStorage.setItem("polinom-theme", "dark"));
+    await page.addInitScript(() => localStorage.setItem("px-mode", "dark"));
     await page.emulateMedia({ colorScheme: "light" });
     await page.goto("/");
     await expect(page.locator("html")).toHaveAttribute("data-mode", "dark");
@@ -35,24 +35,24 @@ test.describe("Mode toggle", () => {
 
     await toggle.click();
     await expect(page.locator("html")).toHaveAttribute("data-mode", "dark");
-    expect(await page.evaluate(() => localStorage.getItem("polinom-theme"))).toBe("dark");
+    expect(await page.evaluate(() => localStorage.getItem("px-mode"))).toBe("dark");
 
     await toggle.click();
     await expect(page.locator("html")).not.toHaveAttribute("data-mode", /.*/);
     await expect(page.locator("html")).toHaveAttribute("data-theme", "px");
-    expect(await page.evaluate(() => localStorage.getItem("polinom-theme"))).toBeNull();
+    expect(await page.evaluate(() => localStorage.getItem("px-mode"))).toBeNull();
   });
 
   test("an override is kept when the system scheme later matches it", async ({ page }) => {
-    await page.addInitScript(() => localStorage.setItem("polinom-theme", "dark"));
+    await page.addInitScript(() => localStorage.setItem("px-mode", "dark"));
     await page.emulateMedia({ colorScheme: "dark" });
     await page.goto("/");
     await expect(page.locator("html")).toHaveAttribute("data-mode", "dark");
-    expect(await page.evaluate(() => localStorage.getItem("polinom-theme"))).toBe("dark");
+    expect(await page.evaluate(() => localStorage.getItem("px-mode"))).toBe("dark");
   });
 
   test("the light override wins over a dark system scheme", async ({ page }) => {
-    await page.addInitScript(() => localStorage.setItem("polinom-theme", "light"));
+    await page.addInitScript(() => localStorage.setItem("px-mode", "light"));
     await page.emulateMedia({ colorScheme: "dark" });
     await page.goto("/");
     await expect(page.locator("html")).toHaveAttribute("data-mode", "light");
