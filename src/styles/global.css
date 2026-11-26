@@ -334,33 +334,6 @@ button:focus-visible {
   background: var(--color-action-secondary-bg-hover);
 }
 
-/* ---------- Curve divider (decorative logo curve; replaced by px-ds CurveDivider in U5) ---------- */
-.curve-divider {
-  padding: var(--space-2) 0 var(--space-4);
-}
-
-.curve-divider svg {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.curve-divider .axis {
-  stroke: var(--color-border-subtle);
-}
-
-.curve-divider .curve {
-  stroke: var(--color-text-muted);
-}
-
-.curve-divider .dot-primary {
-  fill: var(--color-brand-primary);
-}
-
-.curve-divider .dot-secondary {
-  fill: var(--color-brand-secondary);
-}
-
 /* ---------- Sections ---------- */
 section {
   padding: var(--space-16) 0;
@@ -453,35 +426,6 @@ section.alt {
   .terms-grid {
     grid-template-columns: 1fr;
   }
-}
-
-.term-card {
-  background: var(--color-surface-default);
-  border: 1px solid var(--color-border-subtle);
-  border-top: 3px solid var(--color-action-primary-bg);
-  border-radius: var(--radius-lg);
-  padding: var(--space-6);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.term-card .degree {
-  font: var(--text-code-md);
-  color: var(--color-text-link);
-  background: var(--color-brand-tint);
-  width: fit-content;
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-sm);
-}
-
-.term-card h3 {
-  font: var(--text-title-md);
-}
-
-.term-card p {
-  font: var(--text-body-sm);
-  color: var(--color-text-muted);
 }
 
 /* ---------- Process ---------- */
