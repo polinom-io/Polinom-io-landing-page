@@ -46,6 +46,9 @@ jobs:
       - name: Check t() keys match src/i18n/en.json
         run: python3 scripts/check_i18n_keys.py
 
+      - name: Check styles use px-ds tokens, not literal values
+        run: python3 scripts/check_design_tokens.py --self-test && python3 scripts/check_design_tokens.py
+
       - name: Build the site
         run: npm run build
 
