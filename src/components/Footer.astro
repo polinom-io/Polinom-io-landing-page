@@ -10,6 +10,9 @@ const { lang, t } = Astro.props;
 <footer>
   <div class="wrap footer-row">
     <a href={lang === "en" ? "/" : `/${lang}/`} class="wordmark">polinom<sup>.io</sup></a>
+    <nav class="footer-links" aria-label="Footer">
+      <a href={lang === "en" ? "/privacy/" : `/${lang}/privacy/`}>{t("footer.privacy")}</a>
+    </nav>
     <span>{t("footer.copyright")}</span>
   </div>
 </footer>

@@ -1,0 +1,35 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../Header.astro";
+import Footer from "../Footer.astro";
+import { otherLang, useTranslations } from "../../i18n/ui";
+
+interface Props {
+  lang: "en" | "es";
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const privacyPath = (locale: string): string => (locale === "en" ? "/privacy/" : `/${locale}/privacy/`);
+const sections = ["Booking", "Email", "Analytics", "Rights", "Contact"] as const;
+---
+
+<Layout lang={lang} title={`${t("privacy.title")} — Polinom.io`} description={t("privacy.intro")}>
+  <Header lang={lang} t={t} translationHref={privacyPath(otherLang(lang))} />
+  <main id="top" class="wrap legal">
+    <article class="legal-page">
+      <h1>{t("privacy.title")}</h1>
+      <p><em>{t("privacy.updated")}</em></p>
+      <p>{t("privacy.intro")}</p>
+      {
+        sections.map((section) => (
+          <>
+            <h2>{t(`privacy.h2${section}`)}</h2>
+            <p>{t(`privacy.p${section}`)}</p>
+          </>
+        ))
+      }
+    </article>
+  </main>
+  <Footer lang={lang} t={t} />
+</Layout>

@@ -82,7 +82,8 @@
     "note": "Los proyectos suelen comenzar dentro de dos semanas."
   },
   "footer": {
-    "copyright": "© 2026 Polinom.io — consultoría tecnológica."
+    "copyright": "© 2026 Polinom.io — consultoría tecnológica.",
+    "privacy": "Privacidad"
   },
   "notFound": {
     "title": "Página no encontrada",
@@ -95,5 +96,20 @@
     "indexDescription": "Notas sobre estrategia, ingeniería, datos y ejecución del equipo de Polinom.io.",
     "emptyState": "Aún no hay publicaciones.",
     "backToBlog": "← Todas las publicaciones"
+  },
+  "privacy": {
+    "title": "Política de Privacidad",
+    "updated": "Última actualización: septiembre de 2026",
+    "intro": "Esta página explica qué información recopila Polinom.io cuando visitas este sitio, y por qué.",
+    "h2Booking": "Agendar una llamada",
+    "pBooking": "Cuando agendas una llamada a través del calendario integrado en este sitio, Calendly recopila la información que proporcionas directamente — típicamente tu nombre, correo electrónico y lo que escribas en el formulario de reserva. Esa información se usa para confirmar, recordar y, si es necesario, reprogramar la llamada, y para preparar la conversación. Se maneja bajo la política de privacidad propia de Calendly, ya que el flujo de reserva corre en la infraestructura de Calendly, no en la nuestra.",
+    "h2Email": "Correo electrónico",
+    "pEmail": "Si nos escribes directamente a hello@polinom.io, guardamos esa correspondencia para responderte y, cuando corresponda, hacer seguimiento sobre un posible proyecto. No agregamos tu correo a ninguna lista de marketing sin preguntarte antes.",
+    "h2Analytics": "Analítica",
+    "pAnalytics": "Con tu consentimiento (ver el aviso que aparece en tu primera visita), este sitio usa Google Analytics para entender qué páginas se visitan y cómo. Las cookies de analítica no se activan hasta que las aceptas, y puedes rechazarlas sin perder acceso a nada del sitio. Puedes retirar tu consentimiento en cualquier momento borrando las cookies de este sitio en tu navegador.",
+    "h2Rights": "Tus opciones",
+    "pRights": "Puedes rechazar las cookies de analítica, y siempre puedes escribir a hello@polinom.io para preguntar qué información tenemos sobre ti o solicitar que se elimine.",
+    "h2Contact": "Preguntas",
+    "pContact": "Para cualquier duda sobre esta política, escribe a hello@polinom.io."
   }
 }
