@@ -43,7 +43,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root:not([data-mode="light"]) {
     --bg: #002b36;
     --surface: #023642;
     --surface-raised: #073642;
@@ -59,11 +59,11 @@
   }
 }
 
-:root[data-theme="light"] {
+:root[data-mode="light"] {
   color-scheme: light;
 }
 
-:root[data-theme="dark"] {
+:root[data-mode="dark"] {
   color-scheme: dark;
   --bg: #002b36;
   --surface: #023642;
@@ -264,20 +264,20 @@ button:focus-visible {
   display: none;
 }
 
-:root[data-theme="dark"] .theme-toggle .sun {
+:root[data-mode="dark"] .theme-toggle .sun {
   display: none;
 }
 
-:root[data-theme="dark"] .theme-toggle .moon {
+:root[data-mode="dark"] .theme-toggle .moon {
   display: inline;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .theme-toggle .sun {
+  :root:not([data-mode="light"]) .theme-toggle .sun {
     display: none;
   }
 
-  :root:not([data-theme="light"]) .theme-toggle .moon {
+  :root:not([data-mode="light"]) .theme-toggle .moon {
     display: inline;
   }
 }

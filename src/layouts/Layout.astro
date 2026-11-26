@@ -24,16 +24,16 @@ const ogImageURL = new URL("/og-image.png", Astro.site);
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} data-theme="px">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
-    <!-- Apply a stored theme override before first paint to avoid a flash of the wrong theme. -->
+    <!-- Apply a stored mode override before first paint to avoid a flash of the wrong mode. -->
     <script is:inline>
       try {
         var stored = localStorage.getItem("polinom-theme");
-        if (stored === "light" || stored === "dark") document.documentElement.setAttribute("data-theme", stored);
+        if (stored === "light" || stored === "dark") document.documentElement.setAttribute("data-mode", stored);
       } catch (e) {}
     </script>
     <title>{title}</title>
