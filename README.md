@@ -33,7 +33,17 @@ Node version is pinned in `.nvmrc` (currently the latest Node.js LTS). If
 you use [nvm](https://github.com/nvm-sh/nvm), run `nvm use` before the
 commands below; CI reads the same file via `node-version-file`.
 
+The design system package `@polinom-io/px-ds-react` comes from GitHub
+Packages, which requires authentication even for public packages. `.npmrc`
+maps the `@polinom-io` scope and reads the token from `NODE_AUTH_TOKEN`; it
+never holds the value. Locally, use a token that only has `read:packages`
+(a classic token: fine-grained tokens don't support GitHub Packages) and
+export it in your shell before installing. CI and deploy use the workflow's
+`GITHUB_TOKEN` with `packages: read`. The repository has Read access in the
+package's "Manage Actions access" settings.
+
 ```bash
+export NODE_AUTH_TOKEN=<token with read:packages>
 npm install
 npm run dev       # http://localhost:4321, live reload
 npm run build     # outputs static site to dist/
