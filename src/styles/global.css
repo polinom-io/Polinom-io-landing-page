@@ -717,3 +717,7 @@ footer {
   font: var(--text-body-sm);
   color: var(--color-text-muted);
 }
+
+.blog-post .post-meta {
+  margin-bottom: var(--space-8);
+}
