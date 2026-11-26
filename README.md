@@ -53,31 +53,19 @@ npm run check     # Astro/TypeScript diagnostics
 
 ## Design
 
-- **Palette**: Solarized (light: base3/base03 on cream; dark: base03/base2 on
-  near-black), with blue/cyan/violet/orange accents used consistently across
-  both themes. Light/dark follows OS preference by default; the header toggle
-  overrides it and remembers the choice per-browser (`localStorage`).
-- **Type**: display and body both run on monospace faces — Monaspace Xenon (a
-  slab-serif style from GitHub's Monaspace superfamily) for headings, Hack for
-  body text and equation/label accents. Both have Nerd Fonts–patched builds
-  available upstream, though this page embeds the plain (unpatched) webfonts
-  since no icon glyphs are used here.
+The site uses the px-ds design system (`@polinom-io/px-ds-react`, theme `px`).
 
-## Fonts & licensing
-
-Both fonts are self-hosted in `public/fonts/` rather than loaded from a CDN,
-so the page has no third-party font requests at runtime.
-
-| File | Font | License |
-|---|---|---|
-| `hack-regular.woff2`, `hack-bold.woff2` | [Hack](https://github.com/source-foundry/Hack) | MIT (+ Bitstream Vera / DejaVu heritage) — see `LICENSE-hack.txt` |
-| `monaspace-xenon-var.woff2` | [Monaspace Xenon](https://github.com/githubnext/monaspace) | SIL Open Font License 1.1 — see `LICENSE-monaspace.txt` |
-
-If you want the Nerd Fonts–patched builds (for icon glyphs, e.g. in a
-terminal or editor config using these same faces), grab those separately from
-the [nerd-fonts releases](https://github.com/ryanoasis/nerd-fonts/releases) —
-they're not needed for this page and are much larger due to the bundled icon
-sets.
+- **Tokens**: colours, type, spacing, radius, shadow and motion come from
+  `@polinom-io/px-ds-react/tokens.css`. `scripts/check_design_tokens.py` fails
+  CI on any literal value in `src/`. Layout sizes without a px-ds token yet live
+  in one marked block at the top of `src/styles/global.css`, and the
+  breakpoints are listed in its header comment.
+- **Modes**: `<html data-theme="px">` always; light and dark follow the OS
+  unless the header toggle sets `data-mode` (stored per browser under
+  `px-mode`).
+- **Type**: Atkinson Hyperlegible Next for headings and body, Hack for code and
+  the equation. Both fonts ship with px-ds, licences included, and are
+  self-hosted from the build output, with no third-party font requests.
 
 ## Internationalization
 
@@ -114,6 +102,9 @@ what TypeScript already checks structurally:
 - `scripts/check_i18n_keys.py` — every `t("...")` call anywhere in
   `src/**/*.astro` must resolve to a key that actually exists in
   `src/i18n/en.json`.
+- `scripts/check_design_tokens.py` — styles in `src/` use px-ds tokens, not
+  literal colours, fonts, sizes, spacing, radius or shadows (layout block and
+  `@media` breakpoints excepted). `--self-test` checks the rules themselves.
 
 Run them with `npm run check-locales` / `npm run check-i18n-keys`, or
 `python3 scripts/<name>.py` directly.

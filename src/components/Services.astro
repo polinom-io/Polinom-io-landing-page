@@ -8,7 +8,6 @@ interface Props {
 
 const { lang, t } = Astro.props;
 const terms = useDictionary(lang).services.terms;
-const colors = ["var(--blue)", "var(--cyan)", "var(--violet)", "var(--orange)"];
 ---
 
 <section class="alt" id="services">
@@ -19,8 +18,8 @@ const colors = ["var(--blue)", "var(--cyan)", "var(--violet)", "var(--orange)"];
       <p>{t("services.p")}</p>
     </div>
     <div class="terms-grid">
-      {terms.map((term, i) => (
-        <div class="term-card" style={`--card-color: ${colors[i]};`}>
+      {terms.map((term) => (
+        <div class="term-card">
           <span class="degree">{term.degree}</span>
           <h3>{term.title}</h3>
           <p>{term.body}</p>

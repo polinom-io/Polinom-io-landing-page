@@ -13,7 +13,7 @@ const { t } = Astro.props;
     <p class="dek">{t("hero.dek")}</p>
 
     <div class="equation">
-      <span class="op">{t("hero.equation.prefix")}</span><span class="op"> = </span><span class="term-strategy">{t("hero.equation.strategy")}</span><span class="op">·x³ + </span><span class="term-engineering">{t("hero.equation.engineering")}</span><span class="op">·x² + </span><span class="term-data">{t("hero.equation.data")}</span><span class="op">·x + </span><span class="term-execution">{t("hero.equation.execution")}</span>
+      <span class="op">{t("hero.equation.prefix")}</span><span class="op"> = </span><span class="term">{t("hero.equation.strategy")}</span><span class="op">·x³ + </span><span class="term">{t("hero.equation.engineering")}</span><span class="op">·x² + </span><span class="term">{t("hero.equation.data")}</span><span class="op">·x + </span><span class="term">{t("hero.equation.execution")}</span>
     </div>
 
     <div class="cta-row">
@@ -25,9 +25,9 @@ const { t } = Astro.props;
 
 <div class="curve-divider">
   <svg viewBox="0 0 1200 160" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <line x1="0" y1="140" x2="1200" y2="140" stroke="var(--border)" stroke-width="1"></line>
-    <path d="M0,130 C 260,132 320,60 560,78 C 780,94 820,20 1200,14" fill="none" stroke="var(--blue)" stroke-width="2.5"></path>
-    <circle cx="560" cy="78" r="4.5" fill="var(--cyan)"></circle>
-    <circle cx="1200" cy="14" r="4.5" fill="var(--orange)"></circle>
+    <line x1="0" y1="140" x2="1200" y2="140" class="axis" stroke-width="1"></line>
+    <path d="M0,130 C 260,132 320,60 560,78 C 780,94 820,20 1200,14" class="curve" fill="none" stroke-width="2.5"></path>
+    <circle cx="560" cy="78" r="4.5" class="dot-primary"></circle>
+    <circle cx="1200" cy="14" r="4.5" class="dot-secondary"></circle>
   </svg>
 </div>
