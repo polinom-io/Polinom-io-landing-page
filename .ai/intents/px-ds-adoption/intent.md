@@ -1,6 +1,6 @@
 # Intent: adopt the px-ds design system on the landing page
 
-**Status:** G1 proposal, decisions taken · **Created:** 2026-11-25 · **Repos:** `polinom-io-landing-page` (lead), `px-ds` (provider)
+**Status:** G1 proposal, decisions taken · **Created:** 2026-11-25 · **Repos:** `px-landing-page` (lead; renamed from `polinom-io-landing-page` on 2026-11-26), `px-ds` (provider)
 
 ## Why
 
