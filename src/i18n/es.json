@@ -71,10 +71,9 @@
   },
   "stats": {
     "items": [
-      { "figure": "40+", "label": "Sistemas en producción" },
-      { "figure": "12", "label": "Industrias atendidas" },
-      { "figure": "3.1×", "label": "ROI promedio por proyecto" },
-      { "figure": "98%", "label": "Tasa de renovación de clientes" }
+      { "figure": "100", "label": "Puntaje Lighthouse en las cuatro categorías, medido en producción" },
+      { "figure": "100%", "label": "Cambios integrados por pull request con commits firmados" },
+      { "figure": "0", "label": "Scripts, fuentes o rastreadores de terceros cargados" }
     ]
   },
   "contact": {

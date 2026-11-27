@@ -71,10 +71,9 @@
   },
   "stats": {
     "items": [
-      { "figure": "40+", "label": "Systems shipped to production" },
-      { "figure": "12", "label": "Industries served" },
-      { "figure": "3.1×", "label": "Average engagement ROI" },
-      { "figure": "98%", "label": "Client renewal rate" }
+      { "figure": "100", "label": "Lighthouse score in all four categories, measured on production" },
+      { "figure": "100%", "label": "Changes merged through a pull request with signed commits" },
+      { "figure": "0", "label": "Third-party scripts, fonts or trackers loaded" }
     ]
   },
   "contact": {
