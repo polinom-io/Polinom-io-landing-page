@@ -61,7 +61,7 @@ test.describe("404 page", () => {
   test("unknown paths render the not-found page with a link home", async ({ page }) => {
     const response = await page.goto("/this-page-does-not-exist/");
     expect(response?.status()).toBe(404);
-    await expect(page.locator("h1")).toHaveText("Page not found");
+    await expect(page.locator("main h1")).toHaveText("Page not found");
     await expect(page.locator('main a[href="/"]')).toBeVisible();
   });
 });
