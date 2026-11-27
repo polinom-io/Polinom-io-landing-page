@@ -501,19 +501,6 @@ section.alt {
   }
 }
 
-.stat .figure {
-  font: var(--text-display-md);
-  letter-spacing: var(--text-display-md-tracking);
-  color: var(--color-text-link);
-  font-variant-numeric: tabular-nums;
-}
-
-.stat .label {
-  font: var(--text-body-sm);
-  color: var(--color-text-muted);
-  margin-top: var(--space-1);
-}
-
 /* ---------- Contact ---------- */
 .contact-panel {
   background: var(--color-surface-raised);
